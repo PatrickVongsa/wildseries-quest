@@ -11,24 +11,21 @@ import './styles/app.scss';
 // start the Stimulus application
 import './bootstrap';
 
+// You can specify which plugins you need
+import { Tooltip, Toast, Popover } from 'bootstrap';
+
+
 const $ = require('jquery');
 // this "modifies" the jquery module: adding behavior to it
 // the bootstrap module doesn't export/return anything
 require('bootstrap');
 
-// or you can include specific pieces
-// require('bootstrap/js/dist/tooltip');
-// require('bootstrap/js/dist/popover');
-
-$(document).ready(function() {
-    $('[data-toggle="popover"]').popover();
-});
 
 // returns the final, public path to this file
 // path is relative to this file - e.g. assets/images/logo.png
 import logoPath from './images/logo.png';
 
-let html = `<img src="${logoPath}" alt="ACME logo">`;
+let html = `<img src="${logoPath}" alt="logo">`;
 
 import faviconPath from './images/favicon.png';
 
