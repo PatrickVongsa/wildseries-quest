@@ -4,4 +4,7 @@
 
 {% block body %}
     <h1>Bienvenue !</h1>
+
+    {# assets/images/logo.png was copied to public/build/logo.png #}
+    <img src="{{ asset('build/logo.png') }}" alt="Raptors logo">
 {% endblock %}
