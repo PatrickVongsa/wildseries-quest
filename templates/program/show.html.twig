@@ -5,22 +5,29 @@
 
 
 {% block body %}
-	<div class="media">
-		<img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">
-		<div class="media-body">
-			<h1 class="mt-0">{{ program.title }}</h1>
-			<p>{{ program.summary }}</p>
-			<p>Catégorie :
-				{{ program.category.name }}</p>
+	<div class="container">
+		<div class="row mt-3">
+			<img class="col-auto mr-3" height="350" src="{{program.poster}}" alt="{{ program.title }} poster">
+			<div class="col align-self-center">
+				<h1 class="mt-0">{{ program.title }}</h1>
+				<p>{{ program.summary }}</p>
+				<p>Catégorie :
+					{{ program.category.name }}</p>
+			</div>
 		</div>
-		<div>
-			{% for season in seasons %}
-				<div>
-					<p>{{ loop.index}} | {{ "season " ~ season.number }}	:<br/>
-						{{ season.description }}</p>
-          <a href="{{ path('program_season_show', {programId: program.id, seasonId: season.id}) }}">Season details</a>
-				</div>
-			{% endfor %}
+		<div class="row mt-3">
+			<div class="list-group">
+				{% for season in seasons %}
+					<a href="{{ path('program_season_show', {programId: program.id, seasonId: season.id}) }}" class="list-group-item list-group-item-action" aria-current="true">
+						<div class="d-flex w-100 justify-content-between">
+							<h5 class="mb-1">{{ loop.index}}
+								|
+								{{ "season " ~ season.number }}</h5>
+						</div>
+						<p class="mb-1">{{ season.description }}</p>
+					</a>
+				{% endfor %}
+			</div>
 		</div>
 	</div>
 
