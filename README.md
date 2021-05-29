@@ -25,3 +25,5 @@ Quête 10 : Les relations bidirectionnelles avec Doctrine. - https://www.loom.co
 Quête 11 : Le param converter. - https://www.loom.com/share/93c48fd958e34627b010f08fe44edec2
 
 Quête 12 : Les formulaires Symfony - https://www.loom.com/share/875bb3c6354e40ab816c3d2dc3031ba5
+
+Quête 13 : Générer le crud - https://www.loom.com/share/ab78715ae8514c6dbb216d370c0c18ab
