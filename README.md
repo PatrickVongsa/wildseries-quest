@@ -31,3 +31,5 @@ Quête 13 : Générer le crud - https://www.loom.com/share/ab78715ae8514c6dbb216
 Quête 14 : Validation - https://www.loom.com/share/94f9e770887745dab060db1d230cc818
 
 Quête 15 : Doctrine relations “Many-To-Many” - https://www.loom.com/share/e5425ef60a6b4d428e14f87cbaab27fe
+
+Quête 16 : EntityType - https://www.loom.com/share/966916d10327411c89deb7ccbf723368
