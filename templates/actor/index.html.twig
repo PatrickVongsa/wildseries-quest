@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h1>La liste des acteurs :</h1>
+
+	{% for actor in actors %}
+		<div>
+			<h4>{{ actor.name }}</h4>
+			<a href="{{ path("actor_show", { id: actor.id }) }}">Détails</a>
+		</div>
+    {% else %}
+        <p>Aucun acteurs trouvés...</p>
+	{% endfor %}
+{% endblock %}
+
