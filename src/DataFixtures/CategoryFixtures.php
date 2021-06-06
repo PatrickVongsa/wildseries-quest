@@ -13,7 +13,11 @@ class CategoryFixtures extends Fixture
         'Action',
         'Aventure',
         'Animation',
+<<<<<<< HEAD
         'Comedie',
+=======
+        'Fantastique',
+>>>>>>> d563b8d15caa25f5056c4357f6d83024ed3be495
         'Horreur',
     ];
 
@@ -22,8 +26,13 @@ class CategoryFixtures extends Fixture
         foreach (self::CATEGORIES as $key => $categoryName) {
             $category = new Category();
             $category->setName($categoryName);
+<<<<<<< HEAD
             $manager->persist($category);
             $this->addReference('category_' . $key, $category);
+=======
+
+            $manager->persist($category);
+>>>>>>> d563b8d15caa25f5056c4357f6d83024ed3be495
         }
         
         $manager->flush();
