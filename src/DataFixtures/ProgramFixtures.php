@@ -3,12 +3,20 @@
 namespace App\DataFixtures;
 
 use App\Entity\Program;
+use App\Service\Slugify;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class ProgramFixtures extends Fixture implements DependentFixtureInterface
 {
+    private $slugify;
+
+    public function __construct(Slugify $slugify)
+    {
+        $this->slugify = $slugify;
+    }
+
     const PROGRAM = [
         [
             'title' => 'The Walking Dead',
@@ -68,7 +76,8 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
                 ->setTitle($serie['title'])
                 ->setSummary($serie['summary'])
                 ->setPoster($serie['poster'])
-                ->setCategory($this->getReference($serie['category']));
+                ->setCategory($this->getReference($serie['category']))
+                ->setSlug($this->slugify->generate($serie['title']));
                 if ($key == 0) {
                     for ($i=0; $i < count(ActorFixtures::ACTORS); $i++) {
                         $program->addActor($this->getReference('actor_' . $i));
