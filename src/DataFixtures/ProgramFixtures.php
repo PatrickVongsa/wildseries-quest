@@ -77,7 +77,8 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
                 ->setSummary($serie['summary'])
                 ->setPoster($serie['poster'])
                 ->setCategory($this->getReference($serie['category']))
-                ->setSlug($this->slugify->generate($serie['title']));
+                ->setSlug($this->slugify->generate($serie['title']))
+                ->setOwner($this->getReference('owner_0'));
                 if ($key == 0) {
                     for ($i=0; $i < count(ActorFixtures::ACTORS); $i++) {
                         $program->addActor($this->getReference('actor_' . $i));
@@ -94,6 +95,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
         return [
           ActorFixtures::class,
           CategoryFixtures::class,
+          UserFixtures::class,
         ];
     }
 }

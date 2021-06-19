@@ -77,6 +77,10 @@ class CommentController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('comment_index');
+        return $this->redirectToRoute('program_episode_show', [
+            'programSlug' => $comment->getEpisode()->getSeason()->getProgram()->getSlug(),
+            'seasonId' => $comment->getEpisode()->getSeason()->getId(),
+            'episodeSlug' => $comment->getEpisode()->getSlug()
+        ]);
     }
 }

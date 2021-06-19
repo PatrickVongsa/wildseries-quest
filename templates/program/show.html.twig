@@ -11,7 +11,8 @@
 			<div class="col align-self-center">
 				<h1 class="mt-0">{{ program.title }}</h1>
 				<p>{{ program.summary }}</p>
-				<p>Catégorie : {{ program.category.name }}</p>
+				<p>Catégorie :
+					{{ program.category.name }}</p>
 				<strong>Acteurs :</strong>
 				<ul>
 					{% for actor in program.actors %}
@@ -42,6 +43,10 @@
 	<a href="{{ path('program_index') }}">
 		Retour à la liste des programmes
 	</a>
+	
+	{% if is_granted("ROLE_ADMIN") or is_granted("ROLE_CONTRIBUTOR") %}
+		<a href="{{ path('program_edit', { 'slug': program.slug} ) }}">Éditer</a>
+	{%endif%}
 
 {% endblock %}
 

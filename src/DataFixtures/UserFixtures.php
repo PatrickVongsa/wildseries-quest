@@ -27,6 +27,7 @@ class UserFixtures extends Fixture
             'contributor1234'
         ));
         $manager->persist($contributor);
+        $this->addReference('owner_0', $contributor);
 
         // Création d’un utilisateur de type “administrateur”
         $admin = new User();

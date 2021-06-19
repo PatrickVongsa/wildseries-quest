@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit program{% endblock %}
+
+{% block body %}
+    <h1>Edit {{ program.title }}</h1>
+
+    {{ form_start(form) }}
+	{{ form_widget(form) }}
+	<input type='submit' value='Edit program'>
+	{{ form_end(form) }}
+
+    <a href="{{ path('program_show', {slug: program.slug}) }}">back to {{ program.title }}</a>
+{% endblock %}

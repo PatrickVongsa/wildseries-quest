@@ -16,6 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * @Route("/programs", name="program_")
@@ -59,6 +60,7 @@ class ProgramController extends AbstractController
             //ajout du service avant le persist
             $slug = $slugify->generate($program->getTitle());
             $program->setSlug($slug);
+            $program->setOwner($this->getUser());
             // Persist Category Object
             $entityManager->persist($program);
             // Flush the persisted object
@@ -82,7 +84,7 @@ class ProgramController extends AbstractController
     }
 
     /**
-     * getting a program by id
+     * getting a program by slug
      * 
      * @Route("/{slug}", methods={"GET"}, name="show")
      * @return Response
@@ -93,6 +95,29 @@ class ProgramController extends AbstractController
             'program' => $program,
             'seasons' => $program->getSeasons(),
          ]);
+    }
+
+    #[Route('/{slug}/edit', name: 'edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, Program $program): Response
+    {
+        if (!($this->getUser() == $program->getOwner())) {
+            // If not the owner, throws a 403 Access Denied exception
+            throw new AccessDeniedException('Only the owner can edit the program!');
+        }
+
+        $form = $this->createForm(ProgramType::class, $program);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('program_show', ['slug' => $program->getSlug()]);
+        }
+
+        return $this->render('program/edit.html.twig', [
+            'program' => $program,
+            'form' => $form->createView(),
+        ]);
     }
 
     /**

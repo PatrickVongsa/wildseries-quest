@@ -21,11 +21,14 @@
 				<h6>{{ comment.author.email }}</h6>
                 <p>rate : {{ comment.rate }}</p>
 				<p>{{ comment.comment }}</p>
+				{% if is_granted("ROLE_ADMIN")  or app.user == comment.author%}
+					{{ include('comment/_delete_form.html.twig') }}
+				{% endif %}
 			</li>
 		{% endfor %}
 	</ul>
 
-    {% if app.user %}
+    {% if is_granted("ROLE_ADMIN") or is_granted("ROLE_CONTRIBUTOR") %}
         <p>Ecrire un commentaire</p>
         {{ include('comment/_form.html.twig') }}
     {% endif %}
