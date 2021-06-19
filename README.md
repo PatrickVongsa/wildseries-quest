@@ -37,3 +37,5 @@ Quête 16 : EntityType - https://www.loom.com/share/966916d10327411c89deb7ccbf72
 Quête 17 : Les fixtures avancées avec jointures - https://www.loom.com/share/4711bd9aa7434e95b0a3e3ce79adbd80
 
 Quête 18 :  Introduction aux “Services” - https://www.loom.com/share/610c742ac8224608843e7179158687ce
+
+Quête 19 : L'envoi d'e-mail - https://www.loom.com/share/fd29f24ca35f46af80ee1548becb3855

@@ -213,7 +213,8 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
                 ->setNumber($seasons['number'])
                 ->setYear($seasons['year'])
                 ->setDescription($seasons['description'])
-                ->setProgram($this->getReference($seasons['program']));
+                ->setProgram($this->getReference($seasons['program']))
+                ->setSlug($seasons['number'] . '-' . $seasons['program']);
             $manager->persist($season);
             $this->addReference('season_' . $key, $season);
         }
