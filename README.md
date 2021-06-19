@@ -39,3 +39,5 @@ Quête 17 : Les fixtures avancées avec jointures - https://www.loom.com/share/4
 Quête 18 :  Introduction aux “Services” - https://www.loom.com/share/610c742ac8224608843e7179158687ce
 
 Quête 19 : L'envoi d'e-mail - https://www.loom.com/share/fd29f24ca35f46af80ee1548becb3855
+
+Quête 20 - Gestion des utilisateurs - https://www.loom.com/share/51762b5cbfb34acea086715aed29d647
