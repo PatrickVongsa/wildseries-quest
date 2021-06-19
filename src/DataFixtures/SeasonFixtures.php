@@ -41,24 +41,6 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
             'program' => 'program_1',
         ],
         [
-            'number' => 2,
-            'year' => 2013,
-            'description' => 'C\'est la saison 2',
-            'program' => 'program_1',
-        ],
-        [
-            'number' => 3,
-            'year' => 2014,
-            'description' => 'C\'est la saison 3',
-            'program' => 'program_1',
-        ],
-        [
-            'number' => 4,
-            'year' => 2015,
-            'description' => 'C\'est la saison 4',
-            'program' => 'program_1',
-        ],
-        [
             'number' => 1,
             'year' => 2012,
             'description' => 'C\'est la saison 1',
@@ -95,18 +77,6 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
             'program' => 'program_3',
         ],
         [
-            'number' => 3,
-            'year' => 2014,
-            'description' => 'C\'est la saison 3',
-            'program' => 'program_3',
-        ],
-        [
-            'number' => 4,
-            'year' => 2015,
-            'description' => 'C\'est la saison 4',
-            'program' => 'program_3',
-        ],
-        [
             'number' => 1,
             'year' => 2012,
             'description' => 'C\'est la saison 1',
@@ -122,12 +92,6 @@ class SeasonFixtures extends Fixture implements DependentFixtureInterface
             'number' => 3,
             'year' => 2014,
             'description' => 'C\'est la saison 3',
-            'program' => 'program_4',
-        ],
-        [
-            'number' => 4,
-            'year' => 2015,
-            'description' => 'C\'est la saison 4',
             'program' => 'program_4',
         ],
         [
