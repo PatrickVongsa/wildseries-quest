@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wild Series
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>Mon profil</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Emial</th>
+					<th scope="col">Vérified</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">{{app.user.id}}</th>
+					<td>{{ app.user.email }}</td>
+					<td>{{ app.user.isverified }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+{% endblock %}
+

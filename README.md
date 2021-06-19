@@ -43,3 +43,5 @@ Quête 19 : L'envoi d'e-mail - https://www.loom.com/share/fd29f24ca35f46af80ee15
 Quête 20 : Gestion des utilisateurs - https://www.loom.com/share/51762b5cbfb34acea086715aed29d647
 
 Quête 21 : Sécuriser les routes - https://www.loom.com/share/2f4126c610184794ad2521d5391d68db
+
+Quête 22 : Inscription d'un utilisateur - https://www.loom.com/share/2096ed4e9a4d4ed089e2834304e00b63

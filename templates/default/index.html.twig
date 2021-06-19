@@ -3,5 +3,30 @@
 {% block title %}Wild Series{% endblock %}
 
 {% block body %}
-    <h1>Bienvenue !</h1>
+    <h1>
+        {% if app.user %}
+            Bienvenue {{ app.user.email}} !
+        {% else %}
+            Bienvenue tout court !
+        {% endif %}
+    </h1>
+
+    {% for program in programs %}
+        <hr/>
+		<div class="media">
+			<img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster">
+			<div class="media-body">
+				<h1 class="mt-0">{{ program.id }}
+					|
+					<a href="{{ path("program_show", { slug: program.slug }) }}">
+						{{ program.title }}
+					</a>
+				</h1>
+				<p>{{ program.summary }}</p>
+			</div>
+		</div>
+		<hr/>
+	{% else %}
+		Aucune série trouvée.<br/>
+    {% endfor %}
 {% endblock %}

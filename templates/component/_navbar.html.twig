@@ -51,11 +51,20 @@
 			</form>
 			<div class="flex-grow-1"></div>
 			{% if app.user %}
-				<p class="text-light mb-0 mx-2">
-					{{ app.user.email }}
-				</p>
-				<a href="{{ path('app_logout') }}" class="btn btn-secondary">
-					Se déconnecter</a>
+				<li class="dropdown list-unstyled me-3">
+					<a class="dropdown-toggle text-light text-decoration-none active" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						{{ app.user.email }}
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+						<li>
+							<a class="dropdown-item" href="{{ path('app_profil')}}">Mon compte</a>
+						</li>
+						<li><hr class="dropdown-divider"></li>
+						<li>
+							<a class="dropdown-item" href="{{ path('app_logout') }}">Se déconnecter</a>
+						</li>
+					</ul>
+				</li>
 			{% else %}
 				<a href="{{ path('app_login') }}" class="btn btn-secondary">
 					Se connecter</a>
