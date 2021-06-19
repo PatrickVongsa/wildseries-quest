@@ -9,7 +9,7 @@
         {% for program in actor.programs %}
             <li>
                 <p>{{ program.title }}</p>
-                <a href="{{ path('program_show', { id: program.id }) }}">Voir la série</a>
+                <a href="{{ path('program_show', { slug: program.slug }) }}">Voir la série</a>
             </li>
         {% else %}
             <p>Aucune série associée...</p>

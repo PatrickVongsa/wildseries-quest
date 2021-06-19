@@ -25,7 +25,7 @@
 		<div class="row mt-3">
 			<div class="list-group">
 				{% for season in seasons %}
-					<a href="{{ path('program_season_show', {programId: program.id, seasonId: season.id}) }}" class="list-group-item list-group-item-action" aria-current="true">
+					<a href="{{ path('program_season_show', {programSlug: program.slug, seasonId: season.id}) }}" class="list-group-item list-group-item-action" aria-current="true">
 						<div class="d-flex w-100 justify-content-between">
 							<h5 class="mb-1">{{ loop.index}}
 								|
