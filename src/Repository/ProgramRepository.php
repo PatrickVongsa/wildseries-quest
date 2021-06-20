@@ -2,9 +2,12 @@
 
 namespace App\Repository;
 
+use App\Entity\Actor;
 use App\Entity\Program;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+
+use function Symfony\Component\DependencyInjection\Loader\Configurator\ref;
 
 /**
  * @method Program|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +20,19 @@ class ProgramRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Program::class);
+    }
+
+    public function findLikeName(string $name)
+    {
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->select('p')
+            ->where('p.title LIKE :name OR a.name LIKE :name')
+            ->leftJoin( 'p.actors', 'a')
+            ->setParameter('name', '%' . $name . '%')
+            ->orderBy('p.title', 'ASC')
+            ->getQuery();
+        
+        return $queryBuilder->getResult();
     }
 
     // /**
