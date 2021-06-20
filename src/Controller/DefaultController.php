@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Program;
+use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -15,8 +16,8 @@ class DefaultController extends AbstractController
     public function index(): Response
     {
         $programs = $this->getDoctrine()
-                    ->getRepository(Program::class)
-                    ->findBy([], ['id' => 'DESC'], 4,);
+            ->getRepository(Program::class)
+            ->findBy([], ['id' => 'DESC'], 4,);
         return $this->render('default/index.html.twig', [
             'programs' => $programs,
         ]);
@@ -30,6 +31,13 @@ class DefaultController extends AbstractController
     {
         return $this->render('default/myprofil.html.twig', [
             'user' => $this->getUser(),
-        ]); 
+        ]);
+    }
+
+    public function navbarTop(CategoryRepository $categoryRepository): Response
+    {
+        return $this->render('component/navbartop.html.twig', [
+            'categories' => $categoryRepository->findBy([], ['id' => 'DESC'])
+        ]);
     }
 }
