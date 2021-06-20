@@ -50,4 +50,6 @@ Quête 23 : Requêtes personnalisées - https://www.loom.com/share/9f09de36a6f94
 
 Quête 24 : Session et messages flash - https://www.loom.com/share/bcd4abf43bf144af8162ab7334ad6a95
 
-Quête 25 : Watchlist - https://www.loom.com/share/f83e08bccb8340819455ce1ca50edf09
+Quête 25.1 : Watchlist - https://www.loom.com/share/f83e08bccb8340819455ce1ca50edf09
+
+Quête 25.2 : Watchlist avec AJAX - https://www.loom.com/share/5892b677d02a4072a3bb11f989081bfa
