@@ -1,14 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit program{% endblock %}
+{% block title %}Edit program
+{% endblock %}
 
 {% block body %}
-    <h1>Edit {{ program.title }}</h1>
+	<h1>Edit
+		{{ program.title }}</h1>
 
-    {{ form_start(form) }}
+	{{ form_start(form) }}
 	{{ form_widget(form) }}
 	<input type='submit' value='Edit program'>
 	{{ form_end(form) }}
 
-    <a href="{{ path('program_show', {slug: program.slug}) }}">back to {{ program.title }}</a>
+	<a href="{{ path('program_show', {slug: program.slug}) }}">back to {{ program.title }}</a>
+
+	<form method="post" action="{{ path('program_delete', {'slug': program.slug}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+		<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ program.id) }}">
+		<button class="btn">Delete</button>
+	</form>
 {% endblock %}

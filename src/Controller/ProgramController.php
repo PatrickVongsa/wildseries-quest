@@ -84,6 +84,8 @@ class ProgramController extends AbstractController
         
             $mailer->send($email);
 
+            $this->addFlash('success', 'The new program has been created');
+
             return $this->redirectToRoute('program_index');
         }
 
@@ -119,6 +121,8 @@ class ProgramController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'The program has been modified');
 
             return $this->redirectToRoute('program_show', ['slug' => $program->getSlug()]);
         }
@@ -181,5 +185,19 @@ class ProgramController extends AbstractController
             'comments' => $comments,
             'form' => $form->createView(),
         ]);
+    }
+
+    #[Route('/{slug}', name: 'delete', methods: ['POST'])]
+    public function delete(Request $request, Program $program): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$program->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($program);
+            $entityManager->flush();
+
+            $this->addFlash('danger', 'The program has been deleted');
+        }
+
+        return $this->redirectToRoute('program_index');
     }
 }
