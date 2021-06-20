@@ -49,3 +49,5 @@ Quête 22 : Inscription d'un utilisateur - https://www.loom.com/share/2096ed4e9a
 Quête 23 : Requêtes personnalisées - https://www.loom.com/share/9f09de36a6f945fd928f17a49814c544
 
 Quête 24 : Session et messages flash - https://www.loom.com/share/bcd4abf43bf144af8162ab7334ad6a95
+
+Quête 25 : Watchlist - https://www.loom.com/share/f83e08bccb8340819455ce1ca50edf09

@@ -72,10 +72,16 @@ class Program
      */
     private $owner;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="watchlist")
+     */
+    private $viewers;
+
     public function __construct()
     {
         $this->seasons = new ArrayCollection();
         $this->actors = new ArrayCollection();
+        $this->viewers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -208,6 +214,33 @@ class Program
     public function setOwner(?User $owner): self
     {
         $this->owner = $owner;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getViewers(): Collection
+    {
+        return $this->viewers;
+    }
+
+    public function addViewers(User $viewer): self
+    {
+        if (!$this->viewers->contains($viewer)) {
+            $this->users[] = $viewer;
+            $viewer->addWatchlist($this);
+        }
+
+        return $this;
+    }
+
+    public function removeViewers(User $viewer): self
+    {
+        if ($this->viewers->removeElement($viewer)) {
+            $viewer->removeWatchlist($this);
+        }
 
         return $this;
     }

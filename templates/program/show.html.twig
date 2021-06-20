@@ -21,6 +21,17 @@
 						<li>Aucun acteur pour cette série</li>
 					{% endfor %}
 				</ul>
+				{% if app.user and app.user.isInWatchlist(program) %}
+					<a href="{{ path('program_watchlist_remove', {id: program.id})}}">
+						<i class="bi bi-heart-fill"></i>
+					</a>
+				{% elseif app.user and not app.user.isInWatchlist(program) %}
+					<a href="{{ path('program_watchlist', {id: program.id})}}">
+						<i class="bi bi-heart"></i>
+					</a>
+				{% else %}
+					<i class="bi bi-heart"></i>
+				{% endif %}
 			</div>
 		</div>
 		<div class="row mt-3">
@@ -43,10 +54,10 @@
 	<a href="{{ path('program_index') }}">
 		Retour à la liste des programmes
 	</a>
-	
+
 	{% if is_granted("ROLE_ADMIN") or is_granted("ROLE_CONTRIBUTOR") %}
 		<a href="{{ path('program_edit', { 'slug': program.slug} ) }}">Éditer</a>
-	{%endif%}
+		{%endif%}
 
-{% endblock %}
+	{% endblock %}
 

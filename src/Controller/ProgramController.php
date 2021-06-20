@@ -200,4 +200,44 @@ class ProgramController extends AbstractController
 
         return $this->redirectToRoute('program_index');
     }
+
+    /**
+     * @Route("program/{id}/watchlist", name="watchlist", methods={"GET","POST"})
+     * @return Response
+     */
+    public function addToWatchlist(Program $program): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        if ($this->getUser()) {
+            $this->getUser()->addWatchlist($program);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'The program has been add to your watchlist');
+
+            return $this->redirectToRoute('program_show', ['slug' => $program->getSlug()]);
+        }
+
+        return $this->redirectToRoute('program_show', ['slug' => $program->getSlug()]);
+    }
+
+    /**
+     * @Route("program/{id}/watchlistremove", name="watchlist_remove", methods={"GET","POST"})
+     * @return Response
+     */
+    public function removeOfWatchlist(Program $program)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        if ($this->getUser()) {
+            $this->getUser()->removeWatchlist($program);
+            $entityManager->flush();
+
+            $this->addFlash('danger', 'The program has been removed of your watchlist');
+
+            return $this->redirectToRoute('program_show', ['slug' => $program->getSlug()]);
+        }
+
+        return $this->redirectToRoute('program_show', ['slug' => $program->getSlug()]);
+    }
 }
